@@ -13,8 +13,8 @@ vim.opt.rtp:prepend(lazypath)
 
 require("vim-options")
 require("lazy").setup("plugins")
-
-
+-- #colorscheme = "dracula"
+-- vim.cmd("colorscheme " .. colorscheme)
 
 
 

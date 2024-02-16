@@ -9,7 +9,7 @@ return {
     'williamboman/mason-lspconfig.nvim',
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "pylsp", "jsonls", "hydra_lsp" } })
+        ensure_installed = { "lua_ls", "pylsp", "yamlls", "ansiblels", "gopls", "dockerls", "jsonls","terraformls"} })
     end
   },
   {
@@ -19,7 +19,11 @@ return {
     lspconfig.lua_ls.setup({})
     lspconfig.pylsp.setup({})
     lspconfig.jsonls.setup({})
-    lspconfig.hydra_lsp.setup({})
+    lspconfig.yamlls.setup({})
+    lspconfig.ansiblels.setup({})
+    lspconfig.gopls.setup({})
+    lspconfig.dockerls.setup({})
+    lspconfig.terraformls.setup({})
   end
   }
 }
