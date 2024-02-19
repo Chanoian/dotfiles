@@ -115,10 +115,15 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias go="/usr/local/go/bin/go"
 
+# Add OC Specific Aliases
+alias nvim="zellig nvim"
+
 # Add JBang to environment
 alias j!=jbang
 export PATH="$HOME/.jbang/bin:$PATH"
 source /usr/local/share/powerlevel10k/powerlevel10k.zsh-theme
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+
+ZELLIJ_CONFIG_DIR=$HOME/dotfiles/.config/zellij/config.kdl
