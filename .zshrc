@@ -116,7 +116,7 @@ source $ZSH/oh-my-zsh.sh
 alias go="/usr/local/go/bin/go"
 
 # Add OC Specific Aliases
-alias nvim="zellig nvim"
+alias nvim="tmux new  nvim"
 
 # Add JBang to environment
 alias j!=jbang
