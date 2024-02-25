@@ -7,7 +7,6 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 -- Map Ctrl+C to yank in normal mode
 vim.keymap.set("v", "<C-c>", '"*y')
 vim.keymap.set("v", "<C-v>", '"*p')
-vim.cmd("set mouse=v")
 vim.cmd("set cursorline")
 vim.cmd("set title")
 vim.cmd("set ruler")
