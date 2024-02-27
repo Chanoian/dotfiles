@@ -4,6 +4,7 @@ vim.cmd("set softtabstop=4")
 vim.cmd("set shiftwidth=4")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
 -- Map Ctrl+C to yank in normal mode
 vim.keymap.set("v", "<C-c>", '"*y')
 vim.keymap.set("v", "<C-v>", '"*p')
@@ -14,7 +15,6 @@ vim.cmd("set number")
 vim.cmd("set filetype=on")
 vim.opt.swapfile = false
 vim.g.mapleader = " "
--- Set Tabby as the default terminal program
 
 -- ToggleTerm
 vim.keymap.set(
@@ -27,11 +27,14 @@ vim.keymap.set(
 -- NvimTree
 vim.api.nvim_set_keymap("n", "<leader>e", ":NvimTreeOpen<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>q", ":NvimTreeClose<CR>", { noremap = true, silent = true })
+--vim.api.nvim_set_keymap("n")
 
 -- Bufferline
 vim.opt.termguicolors = true
 vim.api.nvim_set_keymap("n", "<leader>bb", ":BufferLinePick<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>bc", ":BufferLinePickClose<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>ba", ":BufferLineCloseAll<CR>", { noremap = true, silent = true })
+
 
 vim.api.nvim_create_autocmd({ "VimResized" }, {
 	desc = "Resize nvim-tree if nvim window got resized",
