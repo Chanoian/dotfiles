@@ -9,12 +9,21 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("v", "<C-c>", '"*y')
 vim.keymap.set("v", "<C-v>", '"*p')
 vim.cmd("set cursorline")
+
 vim.cmd("set title")
 vim.cmd("set ruler")
 vim.cmd("set number")
 vim.cmd("set filetype=on")
 vim.opt.swapfile = false
 vim.g.mapleader = " "
+
+
+-- Delete all the file content
+vim.api.nvim_set_keymap("n", "<leader>da", "ggVGd", { noremap = true })
+
+-- Copy all the file content
+vim.api.nvim_set_keymap("n", "<leader>ya", 'ggVG"+y', { noremap = true })
+vim.api.nvim_set_keymap("v", "<leader>ya", '"+y', { noremap = true })
 
 -- ToggleTerm
 vim.keymap.set(
@@ -34,7 +43,6 @@ vim.opt.termguicolors = true
 vim.api.nvim_set_keymap("n", "<leader>bb", ":BufferLinePick<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>bc", ":BufferLinePickClose<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>ba", ":BufferLineCloseAll<CR>", { noremap = true, silent = true })
-
 
 vim.api.nvim_create_autocmd({ "VimResized" }, {
 	desc = "Resize nvim-tree if nvim window got resized",

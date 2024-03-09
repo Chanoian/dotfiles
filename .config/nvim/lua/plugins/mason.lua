@@ -11,6 +11,8 @@ return {
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"lua_ls",
+					"golangci_lint_ls",
+					"bashls",
 					"pylsp",
 					"yamlls",
 					"ansiblels",

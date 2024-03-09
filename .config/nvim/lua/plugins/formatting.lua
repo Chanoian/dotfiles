@@ -17,8 +17,9 @@ return {
 				json = { "prettier" },
 				yaml = { "prettier" },
 				markdown = { "prettier" },
-				graphql = { "prettier" },
 				lua = { "stylua" },
+				go = { "goimports" },
+				sh = { "shfmt" },
 				python = { "isort", "black" },
 			},
 			format_on_save = {
