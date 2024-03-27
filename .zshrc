@@ -112,10 +112,10 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias go="/usr/local/go/bin/go"
 
 # Add OC Specific Aliases
 alias nvim="tmux new  nvim"
+alias docker=podman
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -130,7 +130,6 @@ export PATH="$HOME/.jbang/bin:$PATH"
 source /usr/local/share/powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 
 ZELLIJ_CONFIG_DIR=$HOME/dotfiles/.config/zellij/config.kdl
 
