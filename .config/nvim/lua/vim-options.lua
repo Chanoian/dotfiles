@@ -27,10 +27,10 @@ vim.api.nvim_set_keymap("v", "<leader>ya", '"+y', { noremap = true })
 
 -- ToggleTerm
 vim.keymap.set(
-	"n",
-	"<S-t>",
-	':ToggleTerm direction=float close_on_exit=true, hide_numbers=true, float_opts={border="curved"}<CR>',
-	{ noremap = true, silent = true }
+    "n",
+    "<S-t>",
+    ':ToggleTerm direction=float close_on_exit=true, hide_numbers=true, float_opts={border="curved"}<CR>',
+    { noremap = true, silent = true }
 )
 
 -- NvimTree
@@ -45,14 +45,14 @@ vim.api.nvim_set_keymap("n", "<leader>bc", ":BufferLinePickClose<CR>", { noremap
 vim.api.nvim_set_keymap("n", "<leader>ba", ":BufferLineCloseAll<CR>", { noremap = true, silent = true })
 
 vim.api.nvim_create_autocmd({ "VimResized" }, {
-	desc = "Resize nvim-tree if nvim window got resized",
+    desc = "Resize nvim-tree if nvim window got resized",
 
-	group = vim.api.nvim_create_augroup("NvimTreeResize", { clear = true }),
-	callback = function()
-		local percentage = 15
+    group = vim.api.nvim_create_augroup("NvimTreeResize", { clear = true }),
+    callback = function()
+        local percentage = 15
 
-		local ratio = percentage / 100
-		local width = math.floor(vim.go.columns * ratio)
-		vim.cmd("tabdo NvimTreeResize " .. width)
-	end,
+        local ratio = percentage / 100
+        local width = math.floor(vim.go.columns * ratio)
+        vim.cmd("tabdo NvimTreeResize " .. width)
+    end,
 })
