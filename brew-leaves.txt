@@ -17,7 +17,6 @@ gtksourceview4
 guile
 hashicorp/tap/terraform
 helm
-hyperkit
 iso-codes
 istioctl
 jpeg
@@ -31,12 +30,13 @@ lua@5.3
 make
 maven
 minikube
+mysql
 neovim
 nikto
 nmap
 node
-node@14
 operator-sdk
+podman
 powerlevel10k
 python@3.9
 ripgrep
@@ -51,8 +51,4 @@ tree
 vala
 wget
 yamllint
-youtube-dl
 yq
-zellij
-zsh-autosuggestions
-zsh-syntax-highlighting
