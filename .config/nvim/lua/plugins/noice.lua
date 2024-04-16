@@ -8,6 +8,9 @@ return {
             enabled = false,
             view_error = "notify",
         },
+        popupmenu = {
+            enabled = false,
+        }
     },
     dependencies = {
         -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries

@@ -86,10 +86,12 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git
-  zsh-autosuggestions 
-  oc
-  zsh-syntax-highlighting 
-  macos)
+ zsh-navigation-tools
+ zsh-interactive-cd
+ zsh-autosuggestions 
+ oc
+ zsh-syntax-highlighting 
+ macos)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -120,9 +122,8 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # 
 # Add OC Specific Aliases
-alias nvim="tmux new  nvim"
 alias docker=podman
 source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
-
+alias history="n-history"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
