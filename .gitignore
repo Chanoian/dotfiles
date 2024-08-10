@@ -1,3 +1,5 @@
 .oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 .config/containers/*
 .config/zed/*
+.config/gatsby/*
+.config/configstore/
