@@ -42,7 +42,8 @@ vim.api.nvim_set_keymap("n", "<leader>q", ":NvimTreeClose<CR>", { noremap = true
 vim.opt.termguicolors = true
 vim.api.nvim_set_keymap("n", "<leader>bb", ":BufferLinePick<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>bc", ":BufferLinePickClose<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>ba", ":BufferLineCloseAll<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>ba", ":BufferLineCloseOthers<CR>", { noremap = true, silent = true })
+
 
 vim.api.nvim_create_autocmd({ "VimResized" }, {
     desc = "Resize nvim-tree if nvim window got resized",
