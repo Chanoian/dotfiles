@@ -121,7 +121,7 @@ export JAVA_HOME=$(/usr/libexec/java_home)
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # 
 # Add OC Specific Aliases
-alias docker=podman
+#alias docker=podman
 source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 alias history="n-history"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -130,3 +130,6 @@ alias history="n-history"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+. "$HOME/.local/bin/env"
