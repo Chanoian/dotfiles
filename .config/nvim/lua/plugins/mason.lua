@@ -24,18 +24,31 @@ return {
             })
         end,
     },
-    {
-        "neovim/nvim-lspconfig",
-        config = function()
-            local lspconfig = require("lspconfig")
-            lspconfig.lua_ls.setup({})
-            lspconfig.pylsp.setup({})
-            lspconfig.jsonls.setup({})
-            lspconfig.yamlls.setup({})
-            lspconfig.ansiblels.setup({})
-            lspconfig.gopls.setup({})
-            lspconfig.dockerls.setup({})
-            lspconfig.terraformls.setup({})
-        end,
-    },
+{
+    "neovim/nvim-lspconfig",
+    config = function()
+        local lspconfig = require("lspconfig")
+        local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+        lspconfig.lua_ls.setup({ capabilities = capabilities })
+        lspconfig.pylsp.setup({ capabilities = capabilities })
+        lspconfig.jsonls.setup({ capabilities = capabilities })
+        lspconfig.yamlls.setup({ capabilities = capabilities })
+        lspconfig.ansiblels.setup({ capabilities = capabilities })
+        lspconfig.gopls.setup({
+            capabilities = capabilities,
+            settings = {
+                gopls = {
+                    completeUnimported = true,
+                    usePlaceholders = true,
+                    analyses = {
+                        unusedparams = true,
+                    },
+                },
+            },
+        })
+        lspconfig.dockerls.setup({ capabilities = capabilities })
+        lspconfig.terraformls.setup({ capabilities = capabilities })
+    end,
+}
 }
