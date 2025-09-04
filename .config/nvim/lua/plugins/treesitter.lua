@@ -6,7 +6,7 @@ return {
 			local config = require("nvim-treesitter.configs")
 			config.setup({
 				auto_install = true,
-				ensure_installed = { "bash", "dockerfile", "go", "gomod", "json", "lua", "python", "yaml" },
+				ensure_installed = { "hcl", "bash", "dockerfile", "go", "gomod", "json", "lua", "python", "yaml" },
 				highlight = { enable = true },
 				indent = { enable = true },
 				autopairs = { enable = true },

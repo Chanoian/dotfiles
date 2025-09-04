@@ -14,3 +14,11 @@ require("vim-options")
 require("lazy").setup("plugins")
 vim.cmd([[colorscheme catppuccin-mocha]])
 ---vim.cmd([[colorscheme gruvbox]])
+
+-- init.lua, before require("lazy").setup("plugins")
+vim.filetype.add({
+    extension = {
+        tf = "terraform",
+        tfvars = "terraform",
+    },
+})
