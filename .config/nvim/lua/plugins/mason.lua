@@ -5,6 +5,7 @@ return {
       require("mason").setup()
     end,
   },
+
   {
     "williamboman/mason-lspconfig.nvim",
     config = function()
@@ -20,23 +21,31 @@ return {
           "dockerls",
           "jsonls",
           "terraformls",
-          "tflint", -- 👈 optional but recommended
+          "tflint",
         },
       })
     end,
   },
+
   {
     "neovim/nvim-lspconfig",
+      dependencies = {
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+  },
+  event = "BufReadPre",
     config = function()
-      local lspconfig = require("lspconfig")
+      -- NEW API (Neovim 0.11+)
+      local lsp = vim.lsp.config
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-      lspconfig.lua_ls.setup({ capabilities = capabilities })
-      lspconfig.pylsp.setup({ capabilities = capabilities })
-      lspconfig.jsonls.setup({ capabilities = capabilities })
-      lspconfig.yamlls.setup({ capabilities = capabilities })
-      lspconfig.ansiblels.setup({ capabilities = capabilities })
-      lspconfig.gopls.setup({
+      lsp.lua_ls.setup({ capabilities = capabilities })
+      lsp.pylsp.setup({ capabilities = capabilities })
+      lsp.jsonls.setup({ capabilities = capabilities })
+      lsp.yamlls.setup({ capabilities = capabilities })
+      lsp.ansiblels.setup({ capabilities = capabilities })
+
+      lsp.gopls.setup({
         capabilities = capabilities,
         settings = {
           gopls = {
@@ -48,12 +57,16 @@ return {
           },
         },
       })
-      lspconfig.dockerls.setup({ capabilities = capabilities })
-      lspconfig.terraformls.setup({
+
+      lsp.dockerls.setup({ capabilities = capabilities })
+
+      lsp.terraformls.setup({
         capabilities = capabilities,
         filetypes = { "terraform", "hcl", "tf", "terraform-vars" },
       })
-      lspconfig.tflint.setup({ capabilities = capabilities }) -- 👈 optional
+
+      lsp.tflint.setup({ capabilities = capabilities })
     end,
   },
 }
+
