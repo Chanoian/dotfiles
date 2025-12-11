@@ -155,3 +155,11 @@ unset __conda_setup
 
 get_openai_key() { security find-generic-password -a "$USER" -s "OPENAI_API_KEY" -w; }
 export OPENAI_API_KEY="$(get_openai_key)"
+
+# Added by Antigravity
+export PATH="/Users/achanoia/.antigravity/antigravity/bin:$PATH"
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+export PATH=$PATH:$HOME/.local/opt/go/bin
+export PATH=$PATH:$HOME//go/bin
