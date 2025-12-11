@@ -12,8 +12,16 @@ end
 vim.opt.rtp:prepend(lazypath)
 require("vim-options")
 require("lazy").setup("plugins")
-vim.cmd([[colorscheme catppuccin-mocha]])
+---vim.cmd([[colorscheme catppuccin-mocha]])
 ---vim.cmd([[colorscheme gruvbox]])
+---vim.cmd([[colorscheme tokyonight]])
+---vim.cmd([[colorscheme catppuccin]])
+---vim.cmd([[colorscheme nordic]])
+---vim.cmd([[colorscheme kanagawa]])
+---vim.cmd([[colorscheme everforest]])
+--vim.cmd([[colorscheme kanagawa-wave]])
+--vim.cmd([[colorscheme kanagawa-lotus]])
+vim.cmd([[colorscheme kanagawa-dragon]])
 
 -- init.lua, before require("lazy").setup("plugins")
 vim.filetype.add({
