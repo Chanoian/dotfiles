@@ -1,4 +1,3 @@
-print(">>> WEZTERM CONFIG LOADED <<<")
 local wezterm = require("wezterm")
 
 return {
@@ -6,7 +5,7 @@ return {
     font = wezterm.font_with_fallback({
         "JetBrainsMono Nerd Font",
     }),
-    font_size = 15.0,
+    font_size = 13.0,
 
     -- GPU acceleration (fastest)
     front_end = "WebGpu",
@@ -22,19 +21,20 @@ return {
         bottom = 8,
     },
 
-    -- Fix typo: correct spelling is *suppress*
-    suppress_missing_glyph_warning = true,
-
+    warn_about_missing_glyphs = false,
     -- Transparency
-    window_background_opacity = 0.95,
+    window_background_opacity = 0.97,
     text_background_opacity = 1.0,
 
     -- Scrollback
     scrollback_lines = 10000,
 
     -- Colorscheme
-    color_scheme = "GruvboxDark",
+    -- color_scheme = "GruvboxDark",
+    color_scheme = "Kanagawa Dragon (Gogh)",
+    --color_scheme = "Tokyo Night",
     enable_tab_bar = true,
+
     hide_tab_bar_if_only_one_tab = true,
     use_fancy_tab_bar = true,
 
