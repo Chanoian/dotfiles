@@ -15,12 +15,14 @@ return {
                 css = { "prettier" },
                 html = { "prettier" },
                 json = { "prettier" },
-                yaml = { "prettier" },
+                yaml = { "yamlfmt" },
                 markdown = { "prettier" },
                 lua = { "stylua" },
                 go = { "goimports" },
                 sh = { "shfmt" },
                 python = { "isort", "black" },
+                terraform = { "terraform_fmt" },
+                hcl = { "terraform_fmt" }
             },
             format_on_save = {
                 lsp_fallback = true,

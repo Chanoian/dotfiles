@@ -1,15 +1,16 @@
-#  My Dotfiles
+# My Dotfiles
 
-Welcome to my personal dotfiles!  
-Tuned for productivity, minimalism, and a touch of style 🐚⚡️
+Welcome to my personal dotfiles!
 
 ## 📂 What’s Inside
-- 🌀 **Zsh** — aliases, plugins, and themes (`.zshrc`, `.p10k.zsh`)  
-- 📝 **Vim/Neovim** — clean editing setup  
-- 💻 **WezTerm** — terminal configuration  
-- 🍺 **Brew leaves** — handy macOS packages  
 
-##  Setup with GNU Stow
+- 🌀 **Zsh** — aliases, plugins, and themes (`.zshrc`, `.p10k.zsh`)
+- 📝 **Vim/Neovim** — clean editing setup
+- 💻 **WezTerm** — terminal configuration
+- 🍺 **Brew leaves** — handy macOS packages
+
+## Setup with GNU Stow
+
 Clone the repo and use [GNU Stow](https://www.gnu.org/software/stow/) to symlink configs into place:
 
 ```bash
@@ -21,3 +22,4 @@ stow zsh
 
 # Or stow everything
 stow */
+```
