@@ -31,8 +31,13 @@ return {
 
     -- Colorscheme
     -- color_scheme = "GruvboxDark",
-    color_scheme = "Kanagawa Dragon (Gogh)",
-    --color_scheme = "Tokyo Night",
+    -- color_scheme = "Gruvbox Dark",
+    color_scheme = "Oceanic-Next",
+    -- color_scheme = "Catppuccin Mocha",
+    -- color_scheme = "Kanagawa Dragon (Gogh)",
+    -- color_scheme = "Everforest Dark Hard (Gogh)",
+    -- color_scheme = "Everforest Dark (Gogh)",
+    -- color_scheme = "Tokyo Night",
     enable_tab_bar = true,
 
     hide_tab_bar_if_only_one_tab = true,

@@ -35,18 +35,33 @@ return {
         },
         event = "BufReadPre",
         config = function()
-            -- NEW API (Neovim 0.11+)
+            require("mason").setup()
+            require("mason-lspconfig").setup()
 
-            local lsp = require("lspconfig")
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-            lsp.lua_ls.setup({ capabilities = capabilities })
-            lsp.pylsp.setup({ capabilities = capabilities })
-            lsp.jsonls.setup({ capabilities = capabilities })
-            lsp.yamlls.setup({ capabilities = capabilities })
-            lsp.ansiblels.setup({ capabilities = capabilities })
+            -- NEW Neovim 0.11+ API
+            vim.lsp.config("lua_ls", {
+                capabilities = capabilities,
+            })
 
-            lsp.gopls.setup({
+            vim.lsp.config("pylsp", {
+                capabilities = capabilities,
+            })
+
+            vim.lsp.config("jsonls", {
+                capabilities = capabilities,
+            })
+
+            vim.lsp.config("yamlls", {
+                capabilities = capabilities,
+            })
+
+            vim.lsp.config("ansiblels", {
+                capabilities = capabilities,
+            })
+
+            vim.lsp.config("gopls", {
                 capabilities = capabilities,
                 settings = {
                     gopls = {
@@ -59,14 +74,9 @@ return {
                 },
             })
 
-            lsp.dockerls.setup({ capabilities = capabilities })
-
-            lsp.terraformls.setup({
+            vim.lsp.config("dockerls", {
                 capabilities = capabilities,
-                filetypes = { "terraform", "hcl", "tf", "terraform-vars" },
             })
-
-            lsp.tflint.setup({ capabilities = capabilities })
         end,
-    },
+    }
 }
