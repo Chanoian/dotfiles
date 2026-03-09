@@ -11,7 +11,7 @@ return {
 	cursor_blink_rate = 500,
 
 	-- GPU acceleration (fastest)
-	front_end = "WebGpu",
+	front_end = "OpenGL",
 	max_fps = 120,
 	animation_fps = 120,
 
@@ -37,26 +37,19 @@ return {
 	-- Colorscheme
 	-- color_scheme = "GruvboxDark",
 	-- color_scheme = "Gruvbox Dark",
-	color_scheme = "Oceanic-Next",
+	-- color_scheme = "Oceanic-Next",
 	-- color_scheme = "Catppuccin Mocha",
-	-- color_scheme = "Kanagawa Dragon (Gogh)",
+	color_scheme = "Kanagawa Dragon (Gogh)",
 	-- color_scheme = "Everforest Dark Hard (Gogh)",
 	-- color_scheme = "Everforest Dark (Gogh)",
 	-- color_scheme = "Tokyo Night",
-	enable_tab_bar = true,
-
-	disable_default_key_bindings = false,
 	keys = {
-
-		-- macOS copy/paste ONLY with CMD
-		{ key = "c", mods = "CMD", action = wezterm.action.CopyTo("Clipboard") },
-		{ key = "v", mods = "CMD", action = wezterm.action.PasteFrom("Clipboard") },
-
-		{ key = "t", mods = "CMD", action = wezterm.action.SpawnTab("CurrentPaneDomain") },
-		{ key = "n", mods = "CMD", action = wezterm.action.SpawnWindow },
-		{ key = "w", mods = "CMD", action = wezterm.action.CloseCurrentTab({ confirm = true }) },
+		{ key = "d", mods = "CMD", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+		{ key = "LeftArrow", mods = "CMD", action = wezterm.action.ActivatePaneDirection("Left") },
+		{ key = "RightArrow", mods = "CMD", action = wezterm.action.ActivatePaneDirection("Right") },
 	},
 
+	enable_tab_bar = true,
 	hide_tab_bar_if_only_one_tab = true,
 	use_fancy_tab_bar = true,
 }

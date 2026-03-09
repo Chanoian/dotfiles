@@ -5,24 +5,18 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-# Add Homebrew Path
-export PATH="/opt/homebrew/bin:$PATH"
-# If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$HOME/Library/Python/3.12/bin/:$PATH
+# PATH setup (consolidated)
+export PATH="/opt/homebrew/bin:$HOME/bin:/usr/local/bin:$HOME/Library/Python/3.12/bin:$HOME/flutter/bin:${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-export PATH=$HOME/flutter/bin:$PATH
-# To Run Krew Plugins
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 alias neat="kubectl neat"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
-
+ZSH_THEME=""
+export GOOGLE_CLOUD_PROJECT="agentspace-301617"
+export KUBECONFIG=~/.kube/config
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -84,12 +78,18 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git
- zsh-navigation-tools
- zsh-interactive-cd
- zsh-autosuggestions 
- oc
- zsh-syntax-highlighting 
+ zsh-autosuggestions
+ zsh-syntax-highlighting
  macos)
+
+# Cache compinit — only regenerate dump once per day
+ZSH_COMPDUMP="${ZSH_CACHE_DIR}/.zcompdump-${HOST}-${ZSH_VERSION}"
+autoload -Uz compinit
+if [[ -f "$ZSH_COMPDUMP" && $(date +'%j') == $(stat -f '%Sm' -t '%j' "$ZSH_COMPDUMP" 2>/dev/null) ]]; then
+  compinit -C -d "$ZSH_COMPDUMP"
+else
+  compinit -d "$ZSH_COMPDUMP"
+fi
 
 source $ZSH/oh-my-zsh.sh
 
@@ -123,13 +123,21 @@ export JAVA_HOME=$(/usr/libexec/java_home)
 # Add OC Specific Aliases
 #alias docker=podman
 source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
-alias history="n-history"
+# alias history="n-history"  # requires zsh-navigation-tools plugin
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+# Lazy-load NVM for faster shell startup
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+nvm() {
+  unset -f nvm node npm npx
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+  nvm "$@"
+}
+node() { unset -f nvm node npm npx; [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"; node "$@"; }
+npm() { unset -f nvm node npm npx; [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"; npm "$@"; }
+npx() { unset -f nvm node npm npx; [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"; npx "$@"; }
 
 
 . "$HOME/.local/bin/env"
@@ -137,29 +145,35 @@ export NVM_DIR="$HOME/.nvm"
 # Added by Windsurf
 export PATH="/Users/achanoia/.codeium/windsurf/bin:$PATH"
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/opt/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/opt/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/opt/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
+# Lazy-load conda for faster shell startup
+conda() {
+  unset -f conda
+  __conda_setup="$('/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+  if [ $? -eq 0 ]; then
+      eval "$__conda_setup"
+  else
+      if [ -f "/opt/anaconda3/etc/profile.d/conda.sh" ]; then
+          . "/opt/anaconda3/etc/profile.d/conda.sh"
+      else
+          export PATH="/opt/anaconda3/bin:$PATH"
+      fi
+  fi
+  unset __conda_setup
+  conda "$@"
+}
 
 
+# Lazy-load OpenAI key from keychain on first use
 get_openai_key() { security find-generic-password -a "$USER" -s "OPENAI_API_KEY" -w; }
-export OPENAI_API_KEY="$(get_openai_key)"
+export OPENAI_API_KEY='__lazy__'
+preexec() {
+  if [[ "$OPENAI_API_KEY" == '__lazy__' ]]; then
+    export OPENAI_API_KEY="$(get_openai_key)"
+  fi
+}
 
 # Added by Antigravity
-export PATH="/Users/achanoia/.antigravity/antigravity/bin:$PATH"
+export PATH="$HOME/.antigravity/antigravity/bin:$HOME/.local/opt/go/bin:$HOME/go/bin:$PATH"
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
-export PATH=$PATH:$HOME/.local/opt/go/bin
-export PATH=$PATH:$HOME//go/bin
