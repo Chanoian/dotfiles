@@ -14,6 +14,12 @@ return {
             renderer = {
                 group_empty = true,
             },
+            filesystem_watchers = {
+                enable = true,
+            },
+            filters = {
+                git_ignored = false,
+            },
         })
     end,
 }

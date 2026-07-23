@@ -35,6 +35,11 @@ if need_to_install_plugins == 1
     q
 endif
 
+" auto-refresh files when changed externally
+set autoread
+autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *
+    \ if mode() != 'c' | checktime | endif
+
 " always show the status bar
 set laststatus=2
 

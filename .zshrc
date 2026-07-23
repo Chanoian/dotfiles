@@ -15,7 +15,7 @@ alias neat="kubectl neat"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME=""
-export GOOGLE_CLOUD_PROJECT="agentspace-301617"
+#export GOOGLE_CLOUD_PROJECT="agentspace-301617"
 export KUBECONFIG=~/.kube/config
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -177,3 +177,17 @@ export PATH="$HOME/.antigravity/antigravity/bin:$HOME/.local/opt/go/bin:$HOME/go
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/achanoia/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/achanoia/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/achanoia/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/achanoia/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+export CLAUDE_CODE_USE_VERTEX=1
+export CLOUD_ML_REGION=global
+export ANTHROPIC_VERTEX_PROJECT_ID=itpc-gcp-global-revenue-claude
+
+# Hermes Agent — ensure ~/.local/bin is on PATH
+export PATH="$HOME/.local/bin:$PATH"

@@ -3,3 +3,8 @@
 .config/zed/*
 .config/gatsby/*
 .config/configstore/
+.config/gcloud/
+.config/gh/
+.config/fish/
+.config/opencode/
+.config/ccstatusline/
